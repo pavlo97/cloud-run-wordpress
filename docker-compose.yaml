@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  wordpress:
+    image: wp-camino:latest
+    ports:
+      - "8000:8080"
+    restart: always
+    environment:
+      GOOGLE_APPLICATION_CREDENTIALS: /tmp/keys/wp-camino-dev-f788d54b4f96.json
+      DB_HOST: 127.0.0.1:3306
+      DB_NAME: caminolocal
+      DB_USER: wordpress
+      DB_PASSWORD: ps1c0t3r4p14
+      CLOUDSQL_INSTANCE: 'wp-camino-dev:europe-west1:wp-mysql'
+      PORT: 8080
+    working_dir: /var/www/html
+    volumes:
+      - ./wp-camino-dev-f788d54b4f96.json:/tmp/keys/wp-camino-dev-f788d54b4f96.json:ro
+
+#  gcloud beta run deploy wp --image gcr.io/wp-camino-dev/v1:v1.0.0 \
+#  --add-cloudsql-instances wp-mysql \
+#  --update-env-vars DB_HOST='127.0.0.1',DB_NAME=wordpress,DB_USER=wordpress,DB_PASSWORD=ps1c0t3r4p14,CLOUDSQL_INSTANCE='wp-camino-dev:europe-west1:wp-mysql'

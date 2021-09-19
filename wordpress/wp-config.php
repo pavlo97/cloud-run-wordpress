@@ -18,6 +18,11 @@
  * @package WordPress
  */
 
+define( 'AS3CF_SETTINGS', serialize( array(
+    'provider' => 'gcp',
+    'key-file-path' => '/tmp/keys/wp-camino-dev-f788d54b4f96.json',
+) ) );
+
 //https://codex.wordpress.org/Administration_Over_SSL#Using_a_Reverse_Proxy
 // in some setups HTTP_X_FORWARDED_PROTO might contain
 // a comma-separated list e.g. http,https
